@@ -135,7 +135,7 @@ class DiscordBot(commands.Bot):
                 await channel.send(f"Changes detected!\nCurrently: {capacity}\nPreviously: {self.value}")
             self.value = self.capacity
         else:
-            pass
+            logger.info("No changes detected :( - it's here to stay alive too fr")
 
     @detect_change.before_loop
     async def before_detect_change(self) -> None:

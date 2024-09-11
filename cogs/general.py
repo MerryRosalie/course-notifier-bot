@@ -15,8 +15,15 @@ class General(commands.Cog, name="general"):
     )
     async def now(self, context: Context) -> None:
         new_value = get_capacity(get_markup(self.bot.url), self.bot.code)
-        await context.send(f"Currently: {new_value}\nPreviously: {self.bot.value}")
+        await context.send(f"URL: {self.bot.url}\nCode: {self.bot.code}\nCurrent Value: {new_value}")
         self.bot.value = new_value
+
+    @commands.hybrid_command(
+        name="info",
+        description="Get current target URL and class code",
+    )
+    async def info(self, context: Context) -> None:
+        await context.send(f"URL: {self.bot.url}\nCode: {self.bot.code}\nCurrent Value: {self.bot.value}")
 
     @commands.hybrid_command(
         name="change",
